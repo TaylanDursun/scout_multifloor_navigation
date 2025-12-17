@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+		<!-- Camera -->
+    <gazebo reference="camera_link">
+        <sensor type="depth" name="zed_camera">
+            <always_on>true</always_on>
+            <update_rate>30.0</update_rate>
+            <camera>
+                <horizontal_fov>1.91986</horizontal_fov> <image>
+                    <width>640</width>
+                    <height>480</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.1</near>
+                    <far>30</far>
+                </clip>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <ros>
+                    <namespace>/</namespace>
+                    <remapping>image_raw:=camera/image_raw</remapping>
+                    <remapping>camera_info:=camera/camera_info</remapping>
+                    <remapping>depth/image_raw:=camera/depth/image_raw</remapping>
+                    <remapping>depth/camera_info:=camera/depth/camera_info</remapping>
+                    <remapping>points:=camera/points</remapping>
+                </ros>
+                <frame_name>camera_optical_frame</frame_name>
+                <point_cloud_cutoff>0.2</point_cloud_cutoff>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+		<!-- Front LiDAR -->
+    <gazebo reference="front_laser_link">
+        <sensor type="ray" name="front_laser">
+            <pose>0 0 0 0 0 0</pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>545</samples> <resolution>1</resolution>
+                        <min_angle>-1.57079</min_angle> <max_angle>1.57079</max_angle>  </horizontal>
+                </scan>
+                <range>
+                    <min>0.10</min>
+                    <max>15.0</max> <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="gazebo_ros_front_laser" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <namespace>/</namespace>
+                    <remapping>~/out:=scan_front</remapping> 
+                </ros>
+                <output_type>sensor_msgs/LaserScan</output_type>
+                <frame_name>front_laser_link</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+		<!-- Rear LiDAR -->
+    <gazebo reference="rear_laser_link">
+        <sensor type="ray" name="rear_laser">
+            <pose>0 0 0 0 0 0</pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>545</samples> <resolution>1</resolution>
+                        <min_angle>-1.57079</min_angle> <max_angle>1.57079</max_angle>  </horizontal>
+                </scan>
+                <range>
+                    <min>0.10</min>
+                    <max>15.0</max> <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="gazebo_ros_rear_laser" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <namespace>/</namespace>
+                    <remapping>~/out:=scan_rear</remapping>
+                </ros>
+                <output_type>sensor_msgs/LaserScan</output_type>
+                <frame_name>rear_laser_link</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+</robot>

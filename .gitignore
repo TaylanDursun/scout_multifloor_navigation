@@ -1,0 +1,24 @@
+# ROS2 build & install directories (eğer üst dizinde init yaparsan diye)
+build/
+install/
+log/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# C++ builds
+*.o
+*.so
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+
+# Gazebo logları
+.gazebo/
+
+# macOS gereksiz dosyaları (HW3'ten hatırlarsın :))
+__MACOSX
+.DS_Store
