@@ -79,12 +79,12 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ### 4. Saving the Map
 Once mapping is complete, use the following command to save the map (using the `use_sim_time` parameter to prevent timeouts):
 
-# Example for Floor 1:
+### Example for Floor 1:
 ```bash
 ros2 run nav2_map_server map_saver_cli -f ~/scout_ws/maps/hospital_floor1 --ros-args -p use_sim_time:=true
 ```
 
-# Example for Floor 2:
+### Example for Floor 2:
 ```bash
 ros2 run nav2_map_server map_saver_cli -f ~/scout_ws/maps/hospital_floor2 --ros-args -p use_sim_time:=true
 ```
