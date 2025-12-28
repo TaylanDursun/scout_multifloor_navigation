@@ -15,7 +15,7 @@ This project aims to implement autonomous mobile robot navigation within a two-s
 ## 🛠️ System Requirements
 * Ubuntu 22.04 LTS
 * ROS2 Humble Hawksbill
-* Gazebo Fortress
+* Gazebo Classic (Gazebo 11)
 * **Required Packages:** `slam_toolbox`, `navigation2`, `nav2_bringup`, `robot_localization`
 
 ## 🚀 Installation
