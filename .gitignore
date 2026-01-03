@@ -1,24 +1,18 @@
-# ROS2 build & install directories (eğer üst dizinde init yaparsan diye)
+# ROS 2 / colcon
 build/
 install/
 log/
 
-# Python caches
-__pycache__/
-*.py[cod]
-
-# C++ builds
-*.o
-*.so
-
-# Editor files
+# VSCode / IDE
 .vscode/
-.idea/
-*.swp
+*.code-workspace
 
-# Gazebo logları
-.gazebo/
+# Python
+__pycache__/
+*.pyc
+.venv/
 
-# macOS gereksiz dosyaları (HW3'ten hatırlarsın :))
-__MACOSX
-.DS_Store
+# Generated graphs/exports (only frames outputs)
+frames_*.gv
+frames_*.pdf
+
