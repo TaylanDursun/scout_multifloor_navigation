@@ -1,0 +1,47 @@
+slam_toolbox:
+  ros__parameters:
+
+    # --- TEMEL AYARLAR ---
+    use_sim_time: true
+    scan_topic: /scan_front # /scan_merged (eski, birleştirilmiş lidar için topic)
+    base_frame: base_link
+    odom_frame: odom
+    map_frame: map
+    mode: mapping 
+
+    # --- HARITA GUNCELLEME SIKLIGI (Performans) ---
+    debug_logging: false
+    throttle_scans: 1
+    transform_publish_period: 0.05 # 20Hz (Daha sik TF yayini)
+    map_update_interval: 1.0
+    resolution: 0.05
+    max_laser_range: 20.0 
+    minimum_time_interval: 0.2
+    transform_timeout: 0.5    # Timeout suresini uzattik
+    tf_buffer_duration: 30.
+    stack_size_to_use: 40000000
+    enable_interactive_mode: true
+
+    # --- ODOMETRI GUVEILIRLIGI (KRITIK KISIM) ---
+    # Scout robotu donerken cok kayar (skid-steer). 
+    # Bu yuzden minimum hareket limitlerini arttiriyoruz ki
+    # robot titrediginde haritayi bozmasin.
+    
+    minimum_travel_distance: 0.3  # 0.1 idi -> 0.3 yaptik (30cm gitmeden harita guncelleme)
+    minimum_travel_heading: 0.3   # 0.1 idi -> 0.3 yaptik (Radyan cinsinden)
+    
+    use_scan_matching: true
+    use_scan_barycenter: true
+    
+    # --- SCAN MATCHING AYARLARI ---
+    # Lidar verisini haritaya oturturken daha agresif arama yap
+    minimum_k_per_scan: 9 
+    minimum_distance_penalty: 0.5 
+    minimum_angle_penalty: 0.9 
+    distance_variance_penalty: 0.5      
+    angle_variance_penalty: 1.0    
+
+    fine_search_angle_offset: 0.00349     
+    coarse_search_angle_offset: 0.349   
+    coarse_angle_resolution: 0.0349        
+    use_response_expansion: true

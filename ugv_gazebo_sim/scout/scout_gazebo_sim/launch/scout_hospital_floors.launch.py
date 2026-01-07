@@ -19,7 +19,7 @@ def launch_setup(context, *args, **kwargs):
         spawn_z = '0.25' # Zemin kat yüksekliği
         print(f"--- FLOOR 1 SEÇİLDİ: Robot (1.90, 11.10) noktasına ışınlanıyor ---")
         
-    # [cite_start]Floor 2 (Üst Kat) için senin HW3'te kullandığın koordinatlar [cite: 492-495]
+    # Floor 2 (Üst Kat) için
     elif floor_value == '2':
         spawn_x = '-0.3'
         spawn_y = '10.95'
@@ -71,18 +71,18 @@ def generate_launch_description():
         launch_arguments={'world': world_path}.items()
     )
 
-    # Robot Description Launch (Zaman ayarını düzelttiğimiz dosya)
-    # Burada 'use_sim_time' parametresini True olarak gönderiyoruz
+    # Robot Description Launch
     description_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(scout_description_path, 'launch', 'display_scout_v2.launch.py')
         ),
         launch_arguments={'use_sim_time': 'true'}.items()
     )
+    
 
     return LaunchDescription([
         floor_arg,
         gazebo_launch,
         description_launch,
-        OpaqueFunction(function=launch_setup) # Mantığı çalıştıran kısım
+        OpaqueFunction(function=launch_setup)
     ])
