@@ -25,8 +25,8 @@ Follow these steps to clone and build the project in your local environment:
 
 ### 1. Create a workspace (If you haven't already)
 ```bash
-mkdir -p ~/team4_ws/src
-cd ~/team4_ws/src
+mkdir -p ~/scout_ws/src
+cd ~/scout_ws/src
 ```
 
 ### 2. Clone the repository
@@ -37,7 +37,7 @@ git clone https://github.com/TaylanDursun/scout_multifloor_navigation.git
 
 ### 3. Install dependencies
 ```bash
-cd ~/team4_ws
+cd ~/scout
 rosdep update
 rosdep install --from-paths src --ignore-src -r -y
 ```
