@@ -53,7 +53,7 @@ def generate_launch_description():
     scout_description_path = get_package_share_directory('scout_description')
     
     # Dünya Dosyası Yolu
-    world_file_name = 'hospital_with_markers.world'
+    world_file_name = 'hospital_two_floors_markes.world'
     world_path = os.path.join(scout_gazebo_sim_path, 'worlds', world_file_name)
 
     # Argüman Tanımları
